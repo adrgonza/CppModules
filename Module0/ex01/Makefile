@@ -1,11 +1,12 @@
 NAME = diary
-CC = c++ -Wall -Wextra -Werror
-SRC = my_diary.cpp
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+SRC = main.cpp Contact.cpp PhoneBook.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 all: $(NAME)
 
