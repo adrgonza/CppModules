@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <cstdlib>
 
 class Contact {
 	private:
@@ -15,9 +16,17 @@ class Contact {
 
 	public:
 		Contact(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber, std::string darkestSecret);
+
+		std::string getTruncFirstName() const;
+		std::string getTruncLastName() const;
+		std::string getTruncNickName() const;
+
 		std::string getFirstName() const;
 		std::string getLastName() const;
 		std::string getNickName() const;
+		std::string getPhoneNumber() const;
+		std::string getDarkestSecret() const;
+
 		Contact();
 		~Contact();
 };
