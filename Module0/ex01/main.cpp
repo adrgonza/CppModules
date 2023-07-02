@@ -6,9 +6,9 @@ int	main(void)
 	PhoneBook phone;
 	std::string input;
 
-	std::cout << "Comand list:" << std::endl << "'ADD'" << std::endl << "'SEARCH'" << std::endl << "'EXIT'" << std::endl;
 	while(true)
 	{
+		std::cout << "Comand list:" << std::endl << "'ADD'" << std::endl << "'SEARCH'" << std::endl << "'EXIT'" << std::endl;
 		std::getline(std::cin, input);
 
 		if (input == "ADD")

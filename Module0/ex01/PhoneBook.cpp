@@ -10,6 +10,12 @@ void	PhoneBook::searchContact()
 {
 	std::string input;
 
+	if (this->contacts[0].getFirstName().empty())
+	{
+		std::cout << "\033[41mError : Add your first contact.\033[0m" << std::endl << std::endl;
+		return ;
+	}
+
 	std::cout << std::endl << "|     index| firstname|  lastname|  nickname|" << std::endl;
 
 	for (int i = 0; i < 8; i++)
@@ -31,20 +37,21 @@ void	PhoneBook::searchContact()
 
 		int number = atoi(input.c_str());
 
-		if (number > 0 && number < 9)
+		if (number > 0 && number < 9 && !this->contacts[number - 1].getFirstName().empty())
 		{
 			std::cout << std::endl;
-			std::cout << "First name: " << this->contacts[number - 1].getFirstName() << std::endl;
-			std::cout << "Last name: " << this->contacts[number - 1].getLastName() << std::endl;
-			std::cout << "Nickname: " << this->contacts[number - 1].getNickName() << std::endl;
-			std::cout << "Phone Number: " << this->contacts[number - 1].getPhoneNumber() << std::endl;
-			std::cout << "Darkest secret: " << this->contacts[number - 1].getDarkestSecret() << std::endl;
-
-			std::cout << std::endl << "Comand list:" << std::endl << "'ADD'" << std::endl << "'SEARCH'" << std::endl << "'EXIT'" << std::endl;
+			std::cout << "\033[47mFirst name     :\033[0m " << this->contacts[number - 1].getFirstName() << std::endl;
+			std::cout << "\033[47mLast name      :\033[0m " << this->contacts[number - 1].getLastName() << std::endl;
+			std::cout << "\033[47mNickname       :\033[0m " << this->contacts[number - 1].getNickName() << std::endl;
+			std::cout << "\033[47mPhone Number   :\033[0m " << this->contacts[number - 1].getPhoneNumber() << std::endl;
+			std::cout << "\033[47mDarkest secret :\033[0m " << this->contacts[number - 1].getDarkestSecret() << std::endl << std::endl;
 			break ;
 		}
 		else
-			std::cout << "Invalid Contact" << std::endl;
+		{
+			std::cout << "\033[41mError : Invalid Contact.\033[0m" << std::endl << std::endl;
+			return ;
+		}
 	}
 }
 
@@ -56,37 +63,50 @@ void	PhoneBook::addContact()
 	std::string phoneNumber;
 	std::string darkestSecret;
 
-	std::cout << "First name: " << std::endl;
+	std::cout << std::endl << "First name: " << std::endl;
 	std::getline(std::cin, firstName);
-	if (std::cin.eof())
+	if (firstName.empty())
+	{
+		std::cout << "\033[41mError : Invalid Imput.\033[0m" << std::endl << std::endl;;
 		return ;
+	}
 
 	std::cout << "Last name: " << std::endl;
 	std::getline(std::cin, lastName);
-	if (std::cin.eof())
+	if (lastName.empty())
+	{
+		std::cout << "\033[41mError : Invalid Imput.\033[0m" << std::endl << std::endl;;
 		return ;
+	}
 
 	std::cout << "Nickname: " << std::endl;
 	std::getline(std::cin, nickname);
-	if (std::cin.eof())
+	if (nickname.empty())
+	{
+		std::cout << "\033[41mError : Invalid Imput.\033[0m" << std::endl << std::endl;;
 		return ;
+	}
 
 	std::cout << "Phone number: " << std::endl;
 	std::getline(std::cin, phoneNumber);
-	if (std::cin.eof())
+	if (phoneNumber.empty())
+	{
+		std::cout << "\033[41mError : Invalid Imput.\033[0m" << std::endl << std::endl;;
 		return ;
+	}
 
 	std::cout << "Darkest secret: " << std::endl;
 	std::getline(std::cin, darkestSecret);
-	if (std::cin.eof())
+	if (darkestSecret.empty())
+	{
+		std::cout << "\033[41mError : Invalid Imput.\033[0m" << std::endl << std::endl;;
 		return ;
+	}
 
 	count = count % 8;
 	Contact add(firstName, lastName, nickname, phoneNumber, darkestSecret);
 	this->contacts[count] = add;
 	count++;
 
-	std::cout << std::endl << "Contact added..."<< std::endl << std::endl;
-
-	std::cout << "COMAND LIST = |ADD| |SEARCH| |EXIT|" << std::endl;
+	std::cout << std::endl << "\033[42mContact added...\033[0m"<< std::endl << std::endl;
 }
