@@ -1,7 +1,7 @@
 NAME = test
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp randomChump.cpp newZombie.cpp Zombie.cpp
+SRC = main.cpp newZombie.cpp Zombie.cpp randomChump.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
