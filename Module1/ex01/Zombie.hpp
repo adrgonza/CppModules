@@ -3,7 +3,6 @@
 #include <iomanip>
 #include <cstdlib>
 
-
 class Zombie
 {
 	private:
@@ -13,5 +12,8 @@ class Zombie
 		Zombie();
 		~Zombie();
 
+		void setName(std::string name);
 		void announce( void );
 };
+
+Zombie* zombieHorde( int N, std::string name );
