@@ -1,13 +1,12 @@
-NAME = Zombietime
+NAME = ZombieParty
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp newZombie.cpp Zombie.cpp randomChump.cpp
+SRC = main.cpp Zombie.cpp ZombieHorde.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
-
 all: $(NAME)
 
 clean:
