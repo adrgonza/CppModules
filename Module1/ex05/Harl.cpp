@@ -21,10 +21,19 @@ void Harl::warning( void )
 }
 void Harl::error( void )
 {
-	std:cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
+	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void complain( std::string level )
+void Harl::complain( std::string level )
 {
-	if ()
+	int pos = 0;
+	std::string status[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	void (Harl::*functionsArray[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+
+	while (pos < 4 && status[pos] != level)
+		pos++;
+	if (pos == 4 && status[pos] != "ERROR")
+		return ;
+	for (int i = 0; i <= pos; i++)
+		(this->*functionsArray[i])();
 }
