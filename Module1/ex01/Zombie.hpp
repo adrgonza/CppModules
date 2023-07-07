@@ -1,3 +1,6 @@
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
+
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -17,3 +20,5 @@ class Zombie
 };
 
 Zombie* zombieHorde( int N, std::string name );
+
+#endif

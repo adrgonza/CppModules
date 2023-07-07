@@ -2,12 +2,12 @@
 
 int	main(void)
 {
-	Zombie* zombix1 = newZombie("Jaime");
+	Zombie*	zombix1 = newZombie("Jaime");
 
 	randomChump("Jairo");
 
-	Zombie* zombix2 = newZombie("Jose");
-	Zombie* zombix3 = newZombie("Juan");
+	Zombie*	zombix2 = newZombie("Jose");
+	Zombie*	zombix3 = newZombie("Juan");
 
 	randomChump("Jesus");
 
@@ -16,15 +16,15 @@ int	main(void)
 	delete zombix3;
 
 	std::cout << std::endl;
-	Zombie* Pedro = newZombie("Pedro");
-	Zombie* Pablo = newZombie("Pablo");
-	Zombie* Paco = newZombie("Paco");
+	Zombie*	Pedro = newZombie("Pedro");
+	Zombie*	Pablo = newZombie("Pablo");
+	Zombie*	Paco = newZombie("Paco");
 	randomChump("Pepe");
 	randomChump("Paul");
-	Zombie* Patricio = newZombie("Patricio");
-	Zombie* Pascual = newZombie("Pascual");
+	Zombie*	Patricio = newZombie("Patricio");
+	Zombie*	Pascual = newZombie("Pascual");
 	randomChump("Pelayo");
-	Zombie* Pau = newZombie("Pau");
+	Zombie*	Pau = newZombie("Pau");
 
 	delete Pedro;
 	delete Pablo;

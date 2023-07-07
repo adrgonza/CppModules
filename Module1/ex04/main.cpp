@@ -12,8 +12,8 @@ int main(int argc, char **argv)
 	ifs.open(argv[1], std::ifstream::in);
 	if (!ifs)
 		return (1);
-	std::ofstream ofs((std::string)argv[1] + ".replace");
 
+	std::ofstream ofs((std::string)argv[1] + ".replace");
 	std::string s1 = argv[2];
 	std::string s2 = argv[3];
 	std::string buffer;
@@ -28,6 +28,7 @@ int main(int argc, char **argv)
 		}
 		ofs << buffer << std::endl;
 	}
+
 	ifs.close();
 	ofs.close();
 
