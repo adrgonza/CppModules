@@ -1,7 +1,7 @@
 NAME = test
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = Fixed.cpp main.cpp
+SRC = main.cpp ClapTrap.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
