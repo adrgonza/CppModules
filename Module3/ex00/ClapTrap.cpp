@@ -29,23 +29,33 @@ ClapTrap::~ClapTrap()
 	std::cout << "Destructor called" << std::endl;
 }
 
+ClapTrap& ClapTrap::operator= ( const ClapTrap &other )
+{
+	std::cout << "Assignation operator called" << std::endl;
+	if (this != &other)
+		*this = other;
+	return (*this);
+}
+
 void ClapTrap::attack(const std::string& target)
 {
 	if (HitPoints < 1 || EnergyPoints < 1)
 		return ;
-	std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << AttackDamage << "points of damage!" << std::endl;
+	std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << AttackDamage << " points of damage!" << std::endl;
 	EnergyPoints--;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	HitPoints -= AttackDamage;
+	std::cout << "ClapTrap " << name << " take " << amount << "points of damage!" << std::endl;
+	HitPoints -= amount;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (HitPoints < 1 || EnergyPoints < 1)
 		return ;
+	std::cout << "ClapTrap " << name << " heal " << amount << "points!" << std::endl;
 	HitPoints += amount;
 	EnergyPoints--;
 }
