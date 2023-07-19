@@ -1,11 +1,13 @@
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
-	ClapTrap a;
-	ClapTrap b("Adrgonza");
-	ClapTrap c(b);
-	ScavTrap d;
+	FragTrap a;
+	FragTrap b("Adrgonza");
+	FragTrap c(b);
+	FragTrap d;
 
 	a.attack("Hakahmed");
 	b.attack("Alepinto");
@@ -16,5 +18,7 @@ int main()
 	b.beRepaired(10);
 	c.takeDamage(10);
 	c.beRepaired(10);
+	c.guardGate();
+	c.highFivesGuys();
 }
 

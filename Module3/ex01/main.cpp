@@ -3,9 +3,9 @@
 
 int main()
 {
-	ClapTrap a;
-	ClapTrap b("Adrgonza");
-	ClapTrap c(b);
+	ScavTrap a;
+	ScavTrap b("Adrgonza");
+	ScavTrap c(b);
 	ScavTrap d;
 
 	a.attack("Hakahmed");
@@ -17,5 +17,6 @@ int main()
 	b.beRepaired(10);
 	c.takeDamage(10);
 	c.beRepaired(10);
+	c.guardGate();
 }
 

@@ -1,7 +1,6 @@
 #ifndef CLAP_TRAP_HPP
 #define CLAP_TRAP_HPP
 
-#include "ScavTrap.hpp"
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -10,7 +9,7 @@
 
 class ClapTrap
 {
-	private:
+	protected:
 		std::string name;
 		int HitPoints;
 		int EnergyPoints;

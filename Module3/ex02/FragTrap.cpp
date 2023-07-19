@@ -9,25 +9,30 @@ FragTrap::FragTrap()
 FragTrap::FragTrap(const std::string name)
 :ClapTrap(name, 100, 100, 30)
 {
-	std::cout << "Name constructor called" << std::endl;
+	std::cout << "Name FragTrap constructor called" << std::endl;
 }
 
 FragTrap::FragTrap( const FragTrap &other )
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy FragTrap constructor called" << std::endl;
 	*this = other;
 }
 
 FragTrap::~FragTrap()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Destructor FragTrap called" << std::endl;
 }
 
 FragTrap& FragTrap::operator= ( const FragTrap &other )
 {
-	std::cout << "Assignation operator called" << std::endl;
+	std::cout << "Assignation FragTrap operator called" << std::endl;
 	if (this != &other)
-		*this = other;
+	{
+		this->name = other.name;
+		this->AttackDamage = other.AttackDamage;
+		this->EnergyPoints = other.EnergyPoints;
+		this->HitPoints = other.HitPoints;
+	}
 	return (*this);
 }
 

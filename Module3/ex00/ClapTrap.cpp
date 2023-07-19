@@ -33,29 +33,45 @@ ClapTrap& ClapTrap::operator= ( const ClapTrap &other )
 {
 	std::cout << "Assignation operator called" << std::endl;
 	if (this != &other)
-		*this = other;
+	{
+		this->name = other.name;
+		this->AttackDamage = other.AttackDamage;
+		this->EnergyPoints = other.EnergyPoints;
+		this->HitPoints = other.HitPoints;
+	}
 	return (*this);
 }
 
 void ClapTrap::attack(const std::string& target)
 {
 	if (HitPoints < 1 || EnergyPoints < 1)
+	{
+		std::cout << name << " is alredy died :((" << std::endl;
 		return ;
+	}
 	std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << AttackDamage << " points of damage!" << std::endl;
 	EnergyPoints--;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << "ClapTrap " << name << " take " << amount << "points of damage!" << std::endl;
+	if (HitPoints < 1)
+	{
+		std::cout << name << " is alredy died :((" << std::endl;
+		return ;
+	}
+	std::cout << "ClapTrap " << name << " take " << amount << " points of damage!" << std::endl;
 	HitPoints -= amount;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (HitPoints < 1 || EnergyPoints < 1)
+	{
+		std::cout << name << " is alredy died :((" << std::endl;
 		return ;
-	std::cout << "ClapTrap " << name << " heal " << amount << "points!" << std::endl;
+	}
+	std::cout << "ClapTrap " << name << " heal " << amount << " points!" << std::endl;
 	HitPoints += amount;
 	EnergyPoints--;
 }
