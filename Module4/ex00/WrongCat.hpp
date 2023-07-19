@@ -1,7 +1,9 @@
 #ifndef WRONGCAT_HPP
 #define WRONGCAT_HPP
 
-class WrongCat
+#include "WrongAnimal.hpp"
+
+class WrongCat : public WrongAnimal
 {
 	private:
 
