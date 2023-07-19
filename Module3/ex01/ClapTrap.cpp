@@ -42,7 +42,10 @@ ClapTrap& ClapTrap::operator= ( const ClapTrap &other )
 {
 	std::cout << "Assignation operator called" << std::endl;
 	if (this != &other)
-		*this = other;
+	{
+		this->name = other.name;
+		this->AttackDamage = other.AttackDamage;
+	}
 	return (*this);
 }
 

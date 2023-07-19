@@ -16,13 +16,13 @@ Fixed::Fixed( const Fixed &other )
 Fixed::Fixed( const int bits )
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->fixedPoint = bits << fractionalBits;
+	this->fixedPoint = bits << this->fractionalBits;
 }
 
 Fixed::Fixed( const float bits )
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->fixedPoint = static_cast<int>(bits * (1 << fractionalBits));
+	this->fixedPoint = (int)(roundf(bits * (1 << fractionalBits)));
 }
 
 /* destruct */
@@ -44,74 +44,70 @@ Fixed&	Fixed::operator=( const Fixed &other )
 
 bool	Fixed::operator>(const Fixed &other) const
 {
-	return (fixedPoint > other.fixedPoint);
+	return (this->toFloat() > other.toFloat());
 }
 
-bool	Fixed::operator<(const Fixed &other)
+bool	Fixed::operator<(const Fixed &other) const
 {
-	return (fixedPoint < other.fixedPoint);
+	return (this->toFloat() < other.toFloat());
 }
 
-bool	Fixed::operator>=(const Fixed &other)
+bool	Fixed::operator>=(const Fixed &other) const
 {
-	return (fixedPoint >= other.fixedPoint);
+	return (this->toFloat() >= other.toFloat());
 }
 
-bool	Fixed::operator<=(const Fixed &other)
+bool	Fixed::operator<=(const Fixed &other) const
 {
-	return (fixedPoint <= other.fixedPoint);
+	return (this->toFloat() <= other.toFloat());
 }
 
-bool	Fixed::operator==(const Fixed &other)
+bool	Fixed::operator==(const Fixed &other) const
 {
-	return (fixedPoint == other.fixedPoint);
+	return (this->toFloat() == other.toFloat());
 }
 
-bool	Fixed::operator!=(const Fixed &other)
+bool	Fixed::operator!=(const Fixed &other) const
 {
-	return (fixedPoint != other.fixedPoint);
+	return (this->toFloat() != other.toFloat());
 }
 
-Fixed	&Fixed::operator+(const Fixed &other)
+Fixed	Fixed::operator+(const Fixed &other)
 {
-	fixedPoint += other.fixedPoint;
-	return(*this);
+	return (this->toFloat() + other.toFloat());
 }
 
-Fixed	&Fixed::operator-(const Fixed &other)
+Fixed	Fixed::operator-(const Fixed &other)
 {
-	fixedPoint -= other.fixedPoint;
-	return(*this);
+	return (this->toFloat() - other.toFloat());
 }
 
-Fixed	&Fixed::operator*(const Fixed &other)
+Fixed	Fixed::operator*(const Fixed &other)
 {
-	fixedPoint *= other.fixedPoint;
-	return (*this);
+	return (this->toFloat() * other.toFloat());
 }
 
-Fixed	&Fixed::operator/(const Fixed &other)
+Fixed	Fixed::operator/(const Fixed &other)
 {
 	if (other.fixedPoint == 0)
 	{
 		std::cout << "fatal: division by zero" << std::endl;
 		return (*this);
 	}
-	fixedPoint /= other.fixedPoint;
-	return(*this);
+	return (this->toFloat() / other.toFloat());
 }
 
 Fixed	&Fixed::operator++(void)
 {
-	fixedPoint++;
+	this->fixedPoint++;
 	return *this;
 }
 
-Fixed	&Fixed::operator++(int)
+Fixed	Fixed::operator++(int)
 {
-	Fixed &temp = *this;
+	Fixed temp = *this;
 
-	fixedPoint++;
+	this->fixedPoint++;
 	return temp;
 }
 
@@ -121,9 +117,9 @@ Fixed	&Fixed::operator--(void)
 	return *this;
 }
 
-Fixed	&Fixed::operator--(int)
+Fixed	Fixed::operator--(int)
 {
-	Fixed &temp = *this;
+	Fixed temp = *this;
 
 	fixedPoint--;
 	return temp;
@@ -135,18 +131,19 @@ std::ostream&	operator<<(std::ostream& os, const Fixed& fixed)
 	return (os);
 }
 
-static Fixed &min(const Fixed& a, const Fixed& b)
+const Fixed &Fixed::min(const Fixed& a, const Fixed& b)
 {
-
-}
-
-static Fixed &max(const Fixed& a, const Fixed& b)
-{
-	if (a.getRawBits() >= b.getRawBits())
+	if (a < b)
 		return (a);
 	return (b);
 }
 
+const Fixed &Fixed::max(const Fixed& a, const Fixed& b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
 
 /* member functions */
 
@@ -162,23 +159,24 @@ void	Fixed::setRawBits( int const raw )
 
 float	Fixed::toFloat(void) const
 {
-	float floatValue = (float)fixedPoint / (1 << fractionalBits);
-
-	floatValue = roundf(floatValue * 100) / 100;
-	return (floatValue);
+	return static_cast<float>(fixedPoint) / (1 << fractionalBits);
 }
 
 int	Fixed::toInt(void) const
 {
-	return (fixedPoint >> fractionalBits);
+	return (this->fixedPoint >> this->fractionalBits);
 }
 
-static Fixed &min(Fixed& a, Fixed& b)
+Fixed &Fixed::min(Fixed& a, Fixed& b)
 {
-
+	if (a < b)
+		return (a);
+	return (b);
 }
 
-static Fixed &max(Fixed& a, Fixed& b)
+Fixed &Fixed::max(Fixed& a, Fixed& b)
 {
-
+	if (a > b)
+		return (a);
+	return (b);
 }

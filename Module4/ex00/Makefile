@@ -1,7 +1,7 @@
 NAME = test
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -17,9 +17,4 @@ fclean: clean
 
 re: clean all
 
-asan: CXXFLAGS += -fsanitize=address -g3
-asan: LDFLAGS += -fsanitize=address
-asan: re
-
 .PHONY: all clean fclean re
-
