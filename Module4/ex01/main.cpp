@@ -4,6 +4,8 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
+//faltaria hacer el main 
+
 int main()
 {
 	const Animal* meta = new Animal();
