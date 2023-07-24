@@ -16,7 +16,7 @@ int main()
 	a.beRepaired(10);
 	b.takeDamage(5);
 	b.beRepaired(10);
-	c.takeDamage(10);
+	c.takeDamage(200);
 	c.beRepaired(10);
 	c.guardGate();
 	c.highFivesGuys();

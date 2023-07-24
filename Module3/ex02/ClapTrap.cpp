@@ -65,7 +65,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 		return ;
 	}
 	std::cout << "ClapTrap " << name << " take " << amount << " points of damage!" << std::endl;
-	HitPoints -= AttackDamage;
+	HitPoints -= amount;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)

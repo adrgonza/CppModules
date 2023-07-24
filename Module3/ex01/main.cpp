@@ -13,8 +13,9 @@ int main()
 	c.attack("Amejia");
 	a.takeDamage(10);
 	a.beRepaired(10);
-	b.takeDamage(5);
+	b.takeDamage(200);
 	b.beRepaired(10);
+	b.takeDamage(10);
 	c.takeDamage(10);
 	c.beRepaired(10);
 	c.guardGate();
