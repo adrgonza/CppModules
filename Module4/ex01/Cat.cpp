@@ -25,6 +25,7 @@ Cat& Cat::operator=( const Cat &other )
 	if (this != &other)
 	{
 		this->type = other.type;
+		this->CatBrain = other.CatBrain;
 	}
 	return (*this);
 }
