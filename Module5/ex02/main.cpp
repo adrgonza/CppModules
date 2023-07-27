@@ -40,7 +40,7 @@ int main()
     std::cout << "------------------------------" << std::endl;
 	try
 	{
-		Form a("other", 1150, 100);
+		AForm a("other", 1150, 100);
 		std::cout << a;
 	}
 	catch(const std::exception& e)
@@ -50,8 +50,8 @@ int main()
     std::cout << "------------------------------" << std::endl;
     try
 	{
-        Form a("a", 10, 20);
-        high.signForm(a);
+        AForm a("a", 10, 20);
+        high.signAForm(a);
 	}
 	catch(const std::exception& e)
 	{

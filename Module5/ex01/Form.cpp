@@ -13,11 +13,27 @@ Form::Form(std::string name) : _name(name), _gradeToExecute(30), _gradeToSign(30
 Form::Form(const std::string name, const int gradeExec, const int gradeSign) : _name(name), _gradeToExecute(gradeExec), _gradeToSign(gradeSign)
 {
 	this->_sign = 0;
+	if (this->_gradeToExecute < 1)
+		throw Form::GradeTooHighException();
+	if (this->_gradeToExecute > 150)
+		throw Form::GradeTooLowException();
+	if (this->_gradeToSign < 1)
+		throw Form::GradeTooHighException();
+	if (this->_gradeToSign > 150)
+		throw Form::GradeTooLowException();
 }
 
 Form::Form(const Form &other) : _name(other._name), _gradeToExecute(other._gradeToExecute), _gradeToSign(other._gradeToSign)
 {
 	this->_sign = other._sign;
+	if (this->_gradeToExecute < 1)
+		throw Form::GradeTooHighException();
+	if (this->_gradeToExecute > 150)
+		throw Form::GradeTooLowException();
+	if (this->_gradeToSign < 1)
+		throw Form::GradeTooHighException();
+	if (this->_gradeToSign > 150)
+		throw Form::GradeTooLowException();
 }
 
 Form::~Form()
@@ -78,6 +94,6 @@ Form& Form::operator=( const Form &other )
 
 std::ostream& operator<<(std::ostream& os, Form& Form)
 {
-	os << Form.getName() << ", Form grade to Sign: " << Form.getGradeSign() << ", Form grade to Execute: " << Form.getGradeExec() << std::endl;
+	os << Form.getName() << " grade to Sign: " << Form.getGradeSign() << ", grade to Execute: " << Form.getGradeExec() << std::endl;
 	return (os);
 }
