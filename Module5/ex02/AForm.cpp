@@ -97,3 +97,8 @@ std::ostream& operator<<(std::ostream& os, AForm& AForm)
 	os << AForm.getName() << " grade to Sign: " << AForm.getGradeSign() << ", grade to Execute: " << AForm.getGradeExec() << std::endl;
 	return (os);
 }
+
+void Form::execute(Bureaucrat const &executor) const
+{
+	(void)executor;
+}

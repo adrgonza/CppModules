@@ -2,6 +2,7 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
+#include <fstream>
 
 class ShrubberyCreationForm : public AForm
 {
@@ -17,6 +18,7 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
 
 		~ShrubberyCreationForm();
+		void createFile() const;
 };
 
 #endif
