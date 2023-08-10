@@ -28,3 +28,10 @@ Brain& Brain::operator=( const Brain &other )
 	}
 	return (*this);
 }
+
+std::string Brain::getIdeas(const int ideaNb)
+{
+	if (ideaNb < 0 || ideaNb > 99)
+		return ("Error there is no ideas here");
+	return (this->ideas[ideaNb]);
+}

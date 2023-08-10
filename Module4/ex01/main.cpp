@@ -4,33 +4,27 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-//faltaria hacer el main 
 
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	const int arraySize = 10;
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	Animal *animalArray[arraySize];
 
+	for (int i = 0; i < arraySize; i++)
+	{
+		if (i < arraySize / 2)
+			animalArray[i] = new Dog();
+		else
+			animalArray[i] = new Cat();
+	}
 
-	const WrongAnimal* b = new WrongAnimal();
-	const WrongAnimal* a = new WrongCat();
+	for (int i = 0; i < arraySize; i++)
+		delete animalArray[i];
 
-	std::cout << i->getType() << " " << std::endl;
-	a->makeSound(); //will output the cat sound!
-	b->makeSound();
+	std::cout << std::endl;
 
-	delete meta;
-	delete i;
-	delete j;
-	delete b;
-	delete a;
-
-	return 0;
+	Dog *dog = new Dog();
+	std::cout << std::endl << dog->getbrain()->getIdeas(0) << std::endl << std::endl;
+	delete dog;
 }
