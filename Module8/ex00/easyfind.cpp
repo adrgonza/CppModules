@@ -1,5 +1,7 @@
 #include "easyfind.hpp"
 
-easyfind::easyfind() {}
-
-easyfind::~easyfind() {}
+template<typename T>
+typename T::iterator easyfind(T& container, int value)
+{
+    typename T::iterator it = std::find(container.begin(), container.end(), value);
+}
