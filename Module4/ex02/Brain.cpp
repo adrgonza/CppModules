@@ -10,7 +10,8 @@ Brain::Brain()
 Brain::Brain(const Brain &other )
 {
 	std::cout << "Brain copy constructor called" << std::endl;
-	*this = other;
+	for (int i = 0; i < 100; i++)
+		this->ideas[i] = other.ideas[i];
 }
 
 Brain::~Brain()
@@ -27,4 +28,11 @@ Brain& Brain::operator=( const Brain &other )
 			this->ideas[i] = other.ideas[i];
 	}
 	return (*this);
+}
+
+std::string Brain::getIdeas(const int ideaNb)
+{
+	if (ideaNb < 0 || ideaNb > 99)
+		return ("Error there is no ideas here");
+	return (this->ideas[ideaNb]);
 }
