@@ -23,8 +23,13 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 }
 
-void ShrubberyCreationForm::createFile() const
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
+    if (this->getSign() == false)
+        throw AFormNotSigned();
+    if (executor.getGrade() <= this->getGradeExec())
+        throw GradeTooLowException();
+
 	std::string filename = this->target + "_shrubbery";
 	std::ofstream ofs(filename);
 	if (!ofs.is_open())
@@ -32,6 +37,6 @@ void ShrubberyCreationForm::createFile() const
 		std::cerr << "Unable to open file: " << filename << std::endl;
 		return;
 	}
-	ofs << "ASCII trees content goes here..." << std::endl;
+	ofs << "*this is a tree* *this is another tree* *this is another tree* *this is another tree*" << std::endl;
 	ofs.close();
 }

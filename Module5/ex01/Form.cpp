@@ -1,13 +1,13 @@
 #include "Form.hpp"
 
-Form::Form() : _name("default"), _gradeToExecute(30), _gradeToSign(30)
+Form::Form() : _name("default"), _gradeToExecute(30), _gradeToSign(20)
 {
-	this->_sign = 0;
+	this->_sign = false;
 }
 
-Form::Form(std::string name) : _name(name), _gradeToExecute(30), _gradeToSign(30)
+Form::Form(std::string name) : _name(name), _gradeToExecute(30), _gradeToSign(20)
 {
-	this->_sign = 0;
+	this->_sign = false;
 }
 
 Form::Form(const std::string name, const int gradeExec, const int gradeSign) : _name(name), _gradeToExecute(gradeExec), _gradeToSign(gradeSign)
@@ -26,14 +26,6 @@ Form::Form(const std::string name, const int gradeExec, const int gradeSign) : _
 Form::Form(const Form &other) : _name(other._name), _gradeToExecute(other._gradeToExecute), _gradeToSign(other._gradeToSign)
 {
 	this->_sign = other._sign;
-	if (this->_gradeToExecute < 1)
-		throw Form::GradeTooHighException();
-	if (this->_gradeToExecute > 150)
-		throw Form::GradeTooLowException();
-	if (this->_gradeToSign < 1)
-		throw Form::GradeTooHighException();
-	if (this->_gradeToSign > 150)
-		throw Form::GradeTooLowException();
 }
 
 Form::~Form()
@@ -49,6 +41,11 @@ const char * Form::GradeTooLowException::what() const throw()
 const char * Form::GradeTooHighException::what() const throw()
 {
 	return ("Error Grade is too high");
+}
+
+const char * Form::FormAlredySigned::what() const throw()
+{
+	return ("Error Form is alredy signed");
 }
 
 std::string Form::getName() const
@@ -73,14 +70,12 @@ bool Form::getSign() const
 
 void Form::beSigned(Bureaucrat &Bureaucrat)
 {
-
-	if (Bureaucrat.getGrade() < 1)
-		throw Bureaucrat::GradeTooHighException();
-	else if (Bureaucrat.getGrade() > 150)
+	if (Bureaucrat.getGrade() > this->_gradeToSign)
 		throw Bureaucrat::GradeTooLowException();
+	else if (this->_sign == true)
+		throw Form::FormAlredySigned();
 	else
 		this->_sign = true;
-
 }
 
 Form& Form::operator=( const Form &other )

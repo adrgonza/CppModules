@@ -1,15 +1,13 @@
 #ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
-#include "AForm.hpp"
-
-class PresidentialPardonForm : public AForm
+class PresidentialPardonForm
 {
-	private:
-		/* data */
-	public:
-		PresidentialPardonForm(/* args */);
-		~PresidentialPardonForm();
+private:
+    /* data */
+public:
+    PresidentialPardonForm(/* args */);
+    ~PresidentialPardonForm();
 };
 
 #endif

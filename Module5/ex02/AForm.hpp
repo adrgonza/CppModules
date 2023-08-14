@@ -1,5 +1,5 @@
-#ifndef AForm_HPP
-# define AForm_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 #include "Bureaucrat.hpp"
 
@@ -30,6 +30,18 @@ class AForm
 				const char * what() const throw();
 		};
 
+		class AFormAlredySigned : public std::exception
+		{
+			public:
+				const char * what() const throw();
+		};
+
+		class AFormNotSigned : public std::exception
+		{
+			public:
+				const char * what() const throw();
+		};
+
 		~AForm();
 
 		AForm& operator=( const AForm &other );
@@ -39,7 +51,6 @@ class AForm
 		int getGradeExec() const;
 		bool getSign() const;
 		void beSigned(Bureaucrat &Bureaucrat);
-		virtual void execute(Bureaucrat const &executor) const;
 };
 
 std::ostream& operator<<(std::ostream& os, AForm& AForm);
