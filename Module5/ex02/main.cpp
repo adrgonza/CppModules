@@ -1,40 +1,46 @@
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main()
 {
-	//Form formo("Formo", 13, 9);
-	//std::cout << formo << std::endl;
-
-	Bureaucrat mateo("mateo", 8);
+	Bureaucrat mateo("Mateo Pizzolo", 2);
 	std::cout << mateo << std::endl;
 
-	//mateo.signForm(formo);
-    std::cout << "------------------------------" << std::endl;
-	try
-	{
-		Bureaucrat low("low", 2);
-		std::cout << low;
-		low.incrementGrade();
-		std::cout << low << std::endl;
-		low.incrementGrade();
-		std::cout << low << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-    std::cout << "------------------------------" << std::endl;
-	Bureaucrat high("high", 149);
-	try
-	{
-		std::cout << high << std::endl;
-		high.decrementGrade();
-		std::cout << high << std::endl;
-        high.decrementGrade();
-        std::cout << high << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	std::cout << "---------------------" << std::endl;
+
+	ShrubberyCreationForm* form1 = new ShrubberyCreationForm("Shrubbery");
+	if (!form1)
+		return (1);
+	std::cout << *form1 << std::endl;
+
+	mateo.signAForm(*form1);
+	mateo.execute(*form1);
+	std::cout << std::endl;
+	system("cat Shrubbery_shrubbery");
+	std::cout << std::endl;
+	delete form1;
+
+	std::cout << "---------------------" << std::endl;
+
+	RobotomyRequestForm* form2 = new RobotomyRequestForm("Robotomy");
+	if (!form2)
+		return (1);
+	std::cout << *form2 << std::endl;
+	mateo.signAForm(*form2);
+	mateo.execute(*form2);
+	std::cout << std::endl;
+	delete form2;
+
+	std::cout << "---------------------" << std::endl;
+
+	PresidentialPardonForm* form3 = new PresidentialPardonForm("Presidential");
+	if (!form3)
+		return (1);
+	std::cout << *form3 << std::endl;
+	mateo.signAForm(*form3);
+	mateo.execute(*form3);
+	std::cout << std::endl;
+	delete form3;
 }
