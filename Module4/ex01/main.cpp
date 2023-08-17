@@ -25,6 +25,11 @@ int main()
 	std::cout << std::endl;
 
 	Dog *dog = new Dog();
-	std::cout << std::endl << dog->getbrain()->getIdeas(0) << std::endl << std::endl;
+	dog->getbrain()->setIdea("hungry", 0);
+	Dog *dog2 = new Dog();
+	*dog2 = *dog;
+	dog->getbrain()->setIdea("chamged", 0);
+	std::cout << dog2->getbrain()->getIdeas(0) << std::endl;
+	//std::cout << std::endl << dog->getbrain()->getIdeas(0) << std::endl << std::endl;
 	delete dog;
 }

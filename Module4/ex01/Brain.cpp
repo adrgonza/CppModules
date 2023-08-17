@@ -36,3 +36,9 @@ std::string Brain::getIdeas(const int ideaNb)
 		return ("Error there is no ideas here");
 	return (this->ideas[ideaNb]);
 }
+
+void Brain::setIdea(std::string idea, const int& idx)
+{
+	if (idx >= 0 && idx < 100)
+		this->ideas[idx] = idea;
+}
