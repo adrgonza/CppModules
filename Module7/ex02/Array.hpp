@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <exception>
+#include <stdexcept>
 
 template <typename T>
 class Array
@@ -11,17 +12,60 @@ class Array
 		T* data;
 		unsigned int lenght;
 	public:
-		Array();
-		Array(unsigned int n);
-		Array(const Array &other);
+		Array()
+		{
+			this->data = NULL;
+			this->lenght = 0;
+		}
 
-		~Array();
+		Array(unsigned int n)
+		{
+			this->lenght = n;
+			this->data = new T[lenght];
+			for (unsigned int i = 0; i < lenght; i++)
+				data[i] = T();
+		}
 
-		Array& operator= ( const Array &other );
-		T& operator[](int index);
+		Array(const Array &other)
+		{
+			this->lenght = other.lenght;
+			this->data = new T[lenght];
 
-		int size() const;
+			for (unsigned i = 0; i < lenght; i++)
+				data[i] = other.data[i];
+		}
+
+		~Array()
+		{
+			delete[] data;
+		}
+
+		Array& operator= ( const Array &other )
+		{
+			if (this != &other)
+			delete[] this->data;
+
+			this->lenght = other.lenght;
+
+			data = new T[lenght];
+			for (int i = 0; i < lenght; i++)
+				data[i] = other.data[i];
+
+			return *this;
+		}
+
+		T& operator[](int index)
+		{
+			if (index < 0 || index >= static_cast<int>(lenght))
+				throw std::out_of_range("Index out of range");
+
+			return data[index];
+		}
+
+		int size() const
+		{
+			return (lenght);
+		}
 };
-
 
 #endif
