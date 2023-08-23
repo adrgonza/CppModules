@@ -14,25 +14,37 @@ class Array
 	public:
 		Array()
 		{
-			this->data = NULL;
+			this->data = new T[0];
+			if (!data)
+			{
+				std::cerr << "New failed.." << std::endl;
+				return ;
+			}
 			this->lenght = 0;
 		}
 
 		Array(unsigned int n)
 		{
+			this->data = new T[n];
+			if (!data)
+			{
+				std::cerr << "New failed.." << std::endl;
+				return ;
+			}
 			this->lenght = n;
-			this->data = new T[lenght];
-			for (unsigned int i = 0; i < lenght; i++)
-				data[i] = T();
 		}
 
 		Array(const Array &other)
 		{
+			this->data = new T[other.lenght];
+			if (!data)
+			{
+				std::cerr << "New failed.." << std::endl;
+				return ;
+			}
+			for (unsigned int i = 0; i < other.lenght; i++)
+				this->data[i] = other.data[i];
 			this->lenght = other.lenght;
-			this->data = new T[lenght];
-
-			for (unsigned i = 0; i < lenght; i++)
-				data[i] = other.data[i];
 		}
 
 		~Array()
@@ -43,28 +55,34 @@ class Array
 		Array& operator= ( const Array &other )
 		{
 			if (this != &other)
-			delete[] this->data;
+			{
+				delete[] this->data;
 
-			this->lenght = other.lenght;
+				data = new T[other.lenght];
+				if (!this->data)
+				{
+					std::cerr << "New failed.." << std::endl;
+					return *this;
+				}
 
-			data = new T[lenght];
-			for (int i = 0; i < lenght; i++)
-				data[i] = other.data[i];
-
+				for (unsigned int i = 0; i < other.lenght; i++)
+					this->data[i] = other.data[i];
+				this->lenght = other.lenght;
+			}
 			return *this;
 		}
 
 		T& operator[](int index)
 		{
-			if (index < 0 || index >= static_cast<int>(lenght))
+			if (index < 0 || static_cast<unsigned int>(index) >= this->lenght)
 				throw std::out_of_range("Index out of range");
 
-			return data[index];
+			return this->data[index];
 		}
 
-		int size() const
+		unsigned int size() const
 		{
-			return (lenght);
+			return (this->lenght);
 		}
 };
 
