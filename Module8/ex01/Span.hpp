@@ -19,7 +19,7 @@ class Span
 		~Span();
 
 		void addNumber(int nb);
-		void addLotNumbers(std::vector<int> begin, std::vector<int> end);
+		void addLotNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 		int shortestSpan();
 		int longestSpan();
 

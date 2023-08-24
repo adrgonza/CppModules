@@ -1,12 +1,9 @@
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <map>
+#include "BitcoinExchange.hpp"
 
 int main(int argc, char **argv)
 {
-	if (argc != 2 || argv[1] != "cpp_09.tgz")
-		return ("Error: could not open file.", 0);
+	if (argc != 2)
+		return ("Error... need a file imput", 0);
 
 	std::ifstream inputFile(argv[1]);
 	if (!inputFile)
@@ -21,6 +18,6 @@ int main(int argc, char **argv)
 	}
 
 	inputFile.close();
-	
+
 
 }

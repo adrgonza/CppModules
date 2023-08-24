@@ -38,12 +38,12 @@ void Span::addNumber(int nb)
 	this->vect.push_back(nb);
 }
 
-void Span::addLotNumbers(std::vector<int> begin, std::vector<int> end)
+void Span::addLotNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
-	if (vect.size() + std::distance(begin.begin(), end.begin()) > MaxNumbers)
+	if (vect.size() + std::distance(begin, end) > MaxNumbers)
 		throw std::overflow_error("Adding these numbers would exceed the capacity of Span.");
 
-	vect.insert(vect.end(), begin.begin(), end.begin());
+	vect.insert(vect.end(), begin, end);
 }
 
 int Span::shortestSpan()

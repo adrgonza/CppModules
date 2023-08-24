@@ -3,7 +3,7 @@
 int main()
 {
 	Span sp = Span(5);
-	
+
 	sp.addNumber(6);
 	sp.addNumber(3);
 	sp.addNumber(17);
@@ -13,5 +13,5 @@ int main()
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 
-	return 0;
+	Span hola = Span(200);
 }
