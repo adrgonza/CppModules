@@ -3,21 +3,17 @@
 int main(int argc, char **argv)
 {
 	if (argc != 2)
-		return ("Error... need a file imput", 0);
-
-	std::ifstream inputFile(argv[1]);
-	if (!inputFile)
-		return (std::cout << "Could not open the file..." << std::endl, 1);
-
-	std::map<int, std::string> file;
-	std::string line;
-
-	for (int i = 0; std::getline(inputFile, line); i++)
 	{
-		file[i] = line;
+		std::cerr << "Error: Input file required.." << std::endl;
+		return (1);
 	}
 
-	inputFile.close();
+	BitcoinExchange btc = BitcoinExchange(argv[1]);
 
+	if (btc.exec() == false)
+	{
+		return (1);
+	}
 
+	return(0);
 }
