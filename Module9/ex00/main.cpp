@@ -11,9 +11,7 @@ int main(int argc, char **argv)
 	BitcoinExchange btc = BitcoinExchange(argv[1]);
 
 	if (btc.exec() == false)
-	{
 		return (1);
-	}
 
 	return(0);
 }
