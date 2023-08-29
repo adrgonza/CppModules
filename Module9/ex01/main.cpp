@@ -11,14 +11,10 @@ int main(int argc, char **argv)
     RPN rpn = RPN();
 
     if (!rpn.parseInput(argv[1]))
-    {
         return (1);
-    }
-    
+
     if (!rpn.exec(argv[1]))
-    {
         return (1);
-    }
 
     return (0);
 }
