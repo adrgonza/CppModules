@@ -19,7 +19,7 @@ int main()
 	{
 		std::vector<int>::iterator result;
 
-		result = easyfind(vect, 102);
+		result = easyfind(vect, 100002);
 
 		std::cout << "Value found at index: " << std::distance(vect.begin(), result) << std::endl;
 	}
@@ -27,5 +27,6 @@ int main()
 	{
 		std::cout << e.what() << std::endl;
 	}
+
 }
 
