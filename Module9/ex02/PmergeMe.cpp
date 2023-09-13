@@ -92,9 +92,7 @@ void PmergeMe::mergeInsertList()
 		std::list<unsigned int>::iterator resultIt = sortedList.begin();
 
 		while (resultIt != sortedList.end() && *resultIt < *it)
-		{
 			++resultIt;
-		}
 
 		sortedList.insert(resultIt, *it++);
 	}
@@ -122,8 +120,8 @@ void PmergeMe::exec()
 	mergeInsertList();
 	clock_t endList = clock();
 
-	double timeVector = static_cast<double>(endVector - startVector) / CLOCKS_PER_SEC * 1e6;
-	double timeList = static_cast<double>(endList - startList) / CLOCKS_PER_SEC * 1e6;
+	double timeVector = static_cast<double>(endVector - startVector) / CLOCKS_PER_SEC * 1000;
+	double timeList = static_cast<double>(endList - startList) / CLOCKS_PER_SEC * 1000;
 
 	std::cout << "Time to process a range of " << this->NbArguments << " elements with std::vector: " << timeVector << " us" << std::endl;
 	std::cout << "Time to process a range of " << this->NbArguments << " elements with std::list: " << timeList << " us" << std::endl;
