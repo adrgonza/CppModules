@@ -1,5 +1,7 @@
 #include "BitcoinExchange.hpp"
 
+//erorr in 2 outputs
+
 int main(int argc, char **argv)
 {
 	if (argc != 2)

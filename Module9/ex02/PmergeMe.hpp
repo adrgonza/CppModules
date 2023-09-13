@@ -10,23 +10,23 @@
 
 class PmergeMe
 {
-    private:
-        std::list<unsigned int>_list;
-        std::vector<unsigned int> _vect;
-        int NbArguments;
-    public:
-        PmergeMe();
-        PmergeMe(int argc);
-        PmergeMe(const PmergeMe & other);
+	private:
+		std::list<unsigned int>_list;
+		std::vector<unsigned int> _vect;
+		int NbArguments;
+	public:
+		PmergeMe();
+		PmergeMe(int argc);
+		PmergeMe(const PmergeMe & other);
 
-        PmergeMe& operator=(const PmergeMe & other);
+		PmergeMe& operator=(const PmergeMe & other);
 
-        ~PmergeMe();
+		~PmergeMe();
 
-        bool parseArgument(char **argv);
-        void exec();
-        void mergeInsertVect();
-        void mergeInsertList();
+		bool parseArgument(char **argv);
+		void exec();
+		void mergeInsertVect();
+		void mergeInsertList();
 };
 
 #endif

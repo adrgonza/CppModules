@@ -2,16 +2,16 @@
 
 int main(int argc, char **argv)
 {
-    if (argc < 3)
-    {
-        std::cerr << "Error: not enought arguments.." << std::endl;
-        return (1);
-    }
+	if (argc < 3)
+	{
+		std::cerr << "Error: not enought arguments.." << std::endl;
+		return (1);
+	}
 
-    PmergeMe merge = PmergeMe(argc);
+	PmergeMe merge = PmergeMe(argc);
 
-    if (!merge.parseArgument(argv))
-        return (1);
-    
-    merge.exec();
+	if (!merge.parseArgument(argv))
+		return (1);
+
+	merge.exec();
 }

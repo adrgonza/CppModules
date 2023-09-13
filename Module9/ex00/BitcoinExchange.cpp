@@ -33,11 +33,13 @@ BitcoinExchange::~BitcoinExchange()
 void BitcoinExchange::calculateAndDisplayOutputs(const std::string date, const float fvalue)
 {
 	std::map<std::string, double>::iterator nearestExchangeRateIt = _exchangeRates.lower_bound(date);
-    
-    const std::string& nearestDate = nearestExchangeRateIt->first;
-    double exchangeRate = nearestExchangeRateIt->second;
-    double output = fvalue * exchangeRate;
-    std::cout << nearestDate << " => " << fvalue << " = " << output << std::endl;
+	if (date != nearestExchangeRateIt->first)
+		--nearestExchangeRateIt;
+
+	double exchangeRate = nearestExchangeRateIt->second;
+	double output = fvalue * exchangeRate;
+
+	std::cout << date << " => " << fvalue << " = " << output << std::endl;
 }
 
 bool BitcoinExchange::parseDataBase(std::ifstream &dataBase)
@@ -52,7 +54,7 @@ bool BitcoinExchange::parseDataBase(std::ifstream &dataBase)
 			return (false);
 		}
 		std::string date = line.substr(0, 10);
-		std::string value = line.substr(12, line.length());
+		std::string value = line.substr(11, line.length());
 		if (!checkParams(date, value))
 			return (false);
 
@@ -82,7 +84,7 @@ bool BitcoinExchange::checkParams(const std::string date, const std::string valu
 			return (false);
 		}
 	}
-	
+
 	int PointCount = 0;
 	for (size_t i = 0; i < value.length(); i++)
 	{
