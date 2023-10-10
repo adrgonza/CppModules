@@ -10,6 +10,8 @@ Character::Character()
 Character::Character(const std::string &name)
 {
 	_name = name;
+	for (int i = 0; i < 4; i++)
+		_inventory[i] = NULL;
 }
 
 Character::Character(const Character &other)
@@ -17,12 +19,13 @@ Character::Character(const Character &other)
 	_name = other._name;
 	for (int i = 0; i < 4; i++)
 		_inventory[i] = other._inventory[i];
-
 }
 
 Character::~Character()
 {
-
+	for (int i = 0; i < 4; i++)
+		if (_inventory[i])
+			delete _inventory[i];
 }
 
 Character & Character::operator=(const Character &other)
@@ -33,6 +36,7 @@ Character & Character::operator=(const Character &other)
 		for (int i = 0; i < 4; i++)
 			_inventory[i] = other._inventory[i];
 	}
+	return (*this);
 }
 
 std::string const & Character::getName() const
@@ -62,6 +66,7 @@ void Character::unequip(int idx)
 	}
 	if (!_inventory[idx])
 		return ;
+	delete _inventory[idx];
 	_inventory[idx] = NULL;
 }
 
@@ -72,5 +77,8 @@ void Character::use(int idx, ICharacter& target)
 		std::cout << "idx not btweeem 0-3" << std::endl;
 		return ;
 	}
-	
+	if (_inventory[idx])
+		_inventory[idx]->use(target);
+	else
+		std::cout << "Character doesnt exist" << std::endl;
 }

@@ -14,5 +14,5 @@ class Cure : public AMateria
 
 		AMateria* clone() const;
 
-		void use(ICharacter& target);
+		virtual void use(ICharacter& target);
 };

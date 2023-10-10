@@ -2,9 +2,16 @@
 
 Cure::Cure() : AMateria ("cure") {}
 
-Cure::Cure(const Cure &other) {}
+Cure::Cure(const Cure &other) : AMateria ("cure")
+{
+	(void)other;
+}
 
-Cure & Cure::operator=(const Cure &other) {}
+Cure & Cure::operator=(const Cure &other)
+{
+	(void)other;
+	return (*this);
+}
 
 Cure::~Cure() {}
 
